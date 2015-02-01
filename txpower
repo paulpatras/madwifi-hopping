@@ -1,0 +1,931 @@
+ath/if_ath.c:		if (!(ni->ni_flags & IEEE80211_NODE_UAPSD))
+ath/if_ath.c:		     (ni->ni_flags & IEEE80211_NODE_PWR_MGT))) {
+ath/if_ath.c:			ni->ni_flags |= IEEE80211_NODE_PS_CHANGED;
+ath/if_ath.c:			ni->ni_pschangeseq = *(__le16 *)(&qwh->i_seq[0]);
+ath/if_ath.c:			ni->ni_flags &= ~IEEE80211_NODE_UAPSD_SP;
+ath/if_ath.c:			ni->ni_flags ^= IEEE80211_NODE_PWR_MGT;
+ath/if_ath.c:				ni->ni_flags |= IEEE80211_NODE_UAPSD_TRIG;
+ath/if_ath.c:				ni->ni_flags &= ~IEEE80211_NODE_UAPSD_TRIG;
+ath/if_ath.c:			__func__, ether_sprintf(ni->ni_macaddr), ac);
+ath/if_ath.c:		if (ni->ni_flags & IEEE80211_NODE_UAPSD_SP) {
+ath/if_ath.c:		    frame_seq == ni->ni_uapsd_trigseq[ac]) {
+ath/if_ath.c:		ni->ni_stats.ns_uapsd_triggers++;
+ath/if_ath.c:		ni->ni_flags |= IEEE80211_NODE_UAPSD_SP;
+ath/if_ath.c:		ni->ni_uapsd_trigseq[ac] = frame_seq;
+ath/if_ath.c:			if (IEEE80211_VAP_EOSPDROP_ENABLED(ni->ni_vap)) {
+ath/if_ath.c:				ni->ni_vap->iv_set_tim(ni, 0);
+ath/if_ath.c:			ni->ni_stats.ns_tx_uapsd += an->an_uapsd_qdepth;
+ath/if_ath.c:	if (ni && ni->ni_vap && txq == &ATH_VAP(ni->ni_vap)->av_mcastq) {
+ath/if_ath.c:	vap = ni->ni_vap;
+ath/if_ath.c:	struct ath_vap *avp = ATH_VAP(ni->ni_vap);
+ath/if_ath.c:		tuadjust = (ni->ni_intval * (ath_maxvaps - avp->av_bslot)) / ath_maxvaps;
+ath/if_ath.c:			avp->av_bslot, ni->ni_intval, (long long) tuadjust);
+ath/if_ath.c:	struct ieee80211com *ic = ni->ni_ic;
+ath/if_ath.c:		, ni->ni_txpower		/* txpower XXX */
+ath/if_ath.c:	nexttbtt = TSF_TO_TU(LE_READ_4(ni->ni_tstamp.data + 4),
+ath/if_ath.c:			     LE_READ_4(ni->ni_tstamp.data));
+ath/if_ath.c:		intval = ni->ni_intval & HAL_BEACON_PERIOD;
+ath/if_ath.c:		__func__, nexttbtt, intval, ni->ni_intval);
+ath/if_ath.c:		bs.bs_timoffset = ni->ni_timoff;
+ath/if_ath.c:	struct ieee80211com *ic = ni->ni_ic;
+ath/if_ath.c:	struct ath_softc *sc = ni->ni_ic->ic_dev->priv;
+ath/if_ath.c:	if (ni->ni_flags & IEEE80211_NODE_UAPSD_TRIG) {
+ath/if_ath.c:		ni->ni_flags &= ~IEEE80211_NODE_UAPSD_TRIG;
+ath/if_ath.c:		ni->ni_flags &= ~IEEE80211_NODE_UAPSD_SP;
+ath/if_ath.c:	struct ath_softc *sc = ni->ni_ic->ic_dev->priv;
+ath/if_ath.c:		rssi = ni->ni_rssi;
+ath/if_ath.c:	struct ieee80211com *ic = ni->ni_ic;
+ath/if_ath.c:	if (ni->ni_vap->iv_flags & IEEE80211_F_XR) {
+ath/if_ath.c:	struct ath_softc *sc = ni->ni_ic->ic_dev->priv;
+ath/if_ath.c:	struct ieee80211vap *vap = ni->ni_vap;
+ath/if_ath.c:				le64_to_cpu(ni->ni_tstamp.tsf) >= tsf) {
+ath/if_ath.c:					(long long) le64_to_cpu(ni->ni_tstamp.tsf));
+ath/if_ath.c:				keyix = ni->ni_ucastkey.wk_keyix;
+ath/if_ath.c:	struct ath_softc *sc = ni->ni_ic->ic_dev->priv;
+ath/if_ath.c:		ni->ni_vap->iv_set_tim(ni, 0);
+ath/if_ath.c:	struct ieee80211com *ic = ni->ni_ic;
+ath/if_ath.c:	struct ieee80211vap *vap = ni->ni_vap;
+ath/if_ath.c:	} else if (ni->ni_ucastkey.wk_cipher == &ieee80211_cipher_none) {
+ath/if_ath.c:		keyix = ni->ni_ucastkey.wk_keyix;
+ath/if_ath.c:	    (ni->ni_capinfo & IEEE80211_CAPINFO_SHORT_PREAMBLE)) {
+ath/if_ath.c:		if (ni->ni_flags & IEEE80211_NODE_QOS) {
+ath/if_ath.c:		if (ni->ni_flags & IEEE80211_NODE_QOS) {
+ath/if_ath.c:		if (!(vap->iv_ath_cap & ni->ni_ath_flags & IEEE80211_ATHC_FF)) {
+ath/if_ath.c:		__func__, pktlen, hdrlen, atype, MIN(ni->ni_txpower, 60), txrate,
+ath/if_ath.c:	//printk("%s: TX power %u \n", dev->name, MIN(ni->ni_txpower, 60));
+ath/if_ath.c:	//		    , MIN(ni->ni_txpower, 60)/* txpower */
+ath/if_ath.c:					ni->ni_vap->iv_stats.is_tx_ffokcnt++;
+ath/if_ath.c:					ni->ni_ic->ic_wme.wme_hipri_traffic++;
+ath/if_ath.c:				ni->ni_inact = ni->ni_inact_reload;
+ath/if_ath.c:					ni->ni_vap->iv_stats.is_tx_fferrcnt++;
+ath/if_ath.c:					if (ni->ni_flags & IEEE80211_NODE_UAPSD_TRIG) {
+ath/if_ath.c:						ni->ni_stats.ns_tx_eosplost++;
+ath/if_ath.c:					__func__, ether_sprintf(ni->ni_macaddr), ds);
+ath/if_ath.c:				ni->ni_flags &= ~IEEE80211_NODE_UAPSD_SP;
+ath/if_ath.c:		sc->sc_curaid = ni->ni_associd;
+ath/if_ath.c:		IEEE80211_ADDR_COPY(sc->sc_curbssid, ni->ni_bssid);
+ath/if_ath.c:				ath_hal_keysetmac(ah, i, ni->ni_bssid);
+ath/if_ath.c:			 , ni->ni_intval
+ath/if_ath.c:			 , ether_sprintf(ni->ni_bssid)
+ath/if_ath.c:			 , ni->ni_capinfo
+ath/if_ath.c:			 , ieee80211_chan2ieee(ic, ni->ni_chan));
+ath/if_ath.c:			ni->ni_ath_defkeyindex = IEEE80211_INVAL_DEFKEY;
+ath/if_ath.c:			    (ni->ni_authmode != IEEE80211_AUTH_8021X) &&
+ath/if_ath.c:                       		ni->ni_ath_defkeyindex = vap->iv_def_txkey;
+ath/if_ath.c:			if (!(vap->iv_ath_cap & ni->ni_ath_flags & IEEE80211_NODE_COMP))
+ath/if_ath.c:				ni->ni_ath_flags &= ~IEEE80211_NODE_COMP;
+ath/if_ath.c:				(ni->ni_ath_flags & IEEE80211_ATHC_TURBOP) != 0;
+ath/if_ath.c:				wds_ni->ni_rates = vap->iv_bss->ni_rates;
+ath/if_ath.c:				    wds_ni->ni_rates.rs_nrates != 0) {
+ath/if_ath.c:	struct ieee80211vap *vap = ni->ni_vap;
+ath/if_ath.c:		if (!(ni->ni_ath_flags & IEEE80211_NODE_COMP))
+ath/if_ath.c:		if (ni->ni_ucastkey.wk_keyix == IEEE80211_KEYIX_NONE)
+ath/if_ath.c:		if ((ni->ni_wpa_ie != NULL) &&
+ath/if_ath.c:		    (ni->ni_rsn.rsn_ucastcipher == IEEE80211_CIPHER_TKIP) &&
+ath/if_ath.c:			if ((ni->ni_ucastkey.wk_flags & IEEE80211_KEY_XR) 
+ath/if_ath.c:				keyindex = ni->ni_ucastkey.wk_keyix + 32;
+ath/if_ath.c:				keyindex = ni->ni_ucastkey.wk_keyix;
+ath/if_ath.c:			keyindex = ni->ni_ucastkey.wk_keyix + ni->ni_rxkeyoff;
+ath/if_ath.c:	struct ieee80211vap *vap = ni->ni_vap;
+ath/if_ath.c:	keyix = ath_key_alloc(vap, &ni->ni_ucastkey);
+ath/if_ath.c:		ni->ni_ucastkey.wk_keyix = keyix;
+ath/if_ath.c:		ath_keyset(sc, &ni->ni_ucastkey, ni->ni_macaddr, vap->iv_bss);
+ath/if_ath.c:	struct ieee80211vap *vap = ni->ni_vap;
+ath/if_ath.c:	KASSERT(ni->ni_ath_defkeyindex < IEEE80211_WEP_NKID,
+ath/if_ath.c:		("got invalid node key index 0x%x", ni->ni_ath_defkeyindex));
+ath/if_ath.c:		&ni->ni_ucastkey))
+ath/if_ath.c:	txkeyidx = ni->ni_ucastkey.wk_keyix;
+ath/if_ath.c:	if (ni->ni_ath_defkeyindex != vap->iv_def_txkey) {
+ath/if_ath.c:		ni->ni_ucastkey.wk_keyix = IEEE80211_KEYIX_NONE;
+ath/if_ath.c:			&ni->ni_ucastkey)) {
+ath/if_ath.c:			ni->ni_ucastkey.wk_keyix = txkeyidx;
+ath/if_ath.c:			ieee80211_crypto_delkey(vap, &ni->ni_ucastkey, ni);
+ath/if_ath.c:		rxkeyidx = ni->ni_ucastkey.wk_keyix;
+ath/if_ath.c:		ni->ni_ucastkey.wk_keyix = txkeyidx;
+ath/if_ath.c:		rcv_key = &vap->iv_nw_keys[ni->ni_ath_defkeyindex];
+ath/if_ath.c:	ni->ni_rxkeyoff = rxkeyidx - txkeyidx;
+ath/if_ath.c:	ni_key = &ni->ni_ucastkey;
+ath/if_ath.c:	ieee80211_crypto_setkey(vap, &ni->ni_ucastkey, 
+ath/if_ath.c:		(rxkeyidx == txkeyidx) ? ni->ni_macaddr:null_macaddr, ni);
+ath/if_ath.c:		ieee80211_crypto_setkey(vap, &tmpkey, ni->ni_macaddr, ni);
+ath/if_ath.c:	ni->ni_ath_flags &= ~IEEE80211_NODE_COMP;
+ath/if_ath.c:	struct ieee80211vap *vap = ni->ni_vap;
+ath/if_ath.c:	if (ni->ni_ucastkey.wk_keyix != IEEE80211_KEYIX_NONE)
+ath/if_ath.c:		ieee80211_crypto_delkey(vap, &ni->ni_ucastkey, ni);
+ath/if_ath.c:		(ni->ni_ath_defkeyindex != IEEE80211_INVAL_DEFKEY)) {
+ath/if_ath.c:			KASSERT(ni->ni_ucastkey.wk_keyix == IEEE80211_KEYIX_NONE,
+ath/if_ath.c:		    		  ni->ni_ucastkey.wk_keyix));
+ath/if_ath.c:	struct ieee80211com *ic = ni->ni_ic;
+ath/if_ath.c:	struct ieee80211vap *vap = ni->ni_vap;
+ath/if_ath.c:	if (!(vap->iv_ath_cap & ni->ni_ath_flags & IEEE80211_NODE_COMP))
+ath/if_ath.c:		ni->ni_ath_flags &= ~IEEE80211_NODE_COMP;
+ath/if_ath.c:	if ((ni->ni_ath_flags & IEEE80211_NODE_COMP) &&
+ath/if_ath.c:		(ni->ni_wpa_ie != NULL) &&
+ath/if_ath.c:		(ni->ni_rsn.rsn_ucastcipher == IEEE80211_CIPHER_TKIP))
+ath/if_ath.c:		ni->ni_ath_flags &= ~IEEE80211_NODE_COMP;
+ath/if_ath.c:	ni->ni_txpower = *value;
+ath_rate/sample/sample.c:	struct ieee80211vap *vap = ni->ni_vap;
+ath_rate/sample/sample.c:	sn->num_rates = ni->ni_rates.rs_nrates;
+ath_rate/sample/sample.c:        for (x = 0; x < ni->ni_rates.rs_nrates; x++) {
+ath_rate/sample/sample.c:		sn->rates[x].rate = ni->ni_rates.rs_rates[x] & IEEE80211_RATE_VAL;
+ath_rate/sample/sample.c:	ni->ni_txrate = 0;
+ath_rate/sample/sample.c:	sn->num_rates = ni->ni_rates.rs_nrates;
+ath_rate/sample/sample.c:			dev_info, __func__, ether_sprintf(ni->ni_macaddr),
+ath_rate/sample/sample.c:		for (; srate >= 0 && (ni->ni_rates.rs_rates[srate] & IEEE80211_RATE_VAL) != vap->iv_fixed_rate; srate--);
+ath_rate/sample/sample.c:		ni->ni_txrate = srate;
+ath_rate/sample/sample.c:			dev_info, __func__, ether_sprintf(ni->ni_macaddr), 
+ath_rate/sample/sample.c:		for (x = 0; x < ni->ni_rates.rs_nrates; x++) {
+ath_rate/sample/sample.c:		dev_info, __func__, ether_sprintf(ni->ni_macaddr), 
+ath_rate/sample/sample.c:	ni->ni_txrate = sn->current_rate[0];
+ath_rate/sample/sample.c:        ath_rate_ctl_reset(ni->ni_ic->ic_dev->priv, ni);
+ath_rate/sample/sample.c:		if (memcmp(vap->iv_myaddr, ni->ni_macaddr, 
+ath_rate/sample/sample.c:		p += sprintf(p, "%s\n", ether_sprintf(ni->ni_macaddr));
+ath_rate/onoe/onoe.c:		__func__, ether_sprintf(ni->ni_macaddr),
+ath_rate/onoe/onoe.c:		ni->ni_rates.rs_nrates > 0 ?
+ath_rate/onoe/onoe.c:			(ni->ni_rates.rs_rates[rate] & IEEE80211_RATE_VAL) / 2 : 0);
+ath_rate/onoe/onoe.c:	ni->ni_txrate = rate;
+ath_rate/onoe/onoe.c:	if (ni->ni_rates.rs_nrates == 0)
+ath_rate/onoe/onoe.c:	on->on_tx_rix0 = sc->sc_rixmap[ni->ni_rates.rs_rates[rate] & IEEE80211_RATE_VAL];
+ath_rate/onoe/onoe.c:			rix = sc->sc_rixmap[ni->ni_rates.rs_rates[rate]&IEEE80211_RATE_VAL];
+ath_rate/onoe/onoe.c:			rix = sc->sc_rixmap[ni->ni_rates.rs_rates[rate]&IEEE80211_RATE_VAL];
+ath_rate/onoe/onoe.c:#define	RATE(_ix)	(ni->ni_rates.rs_rates[(_ix)] & IEEE80211_RATE_VAL)
+ath_rate/onoe/onoe.c:	struct ieee80211vap *vap = ni->ni_vap;
+ath_rate/onoe/onoe.c:	KASSERT(ni->ni_rates.rs_nrates > 0, ("no rates"));
+ath_rate/onoe/onoe.c:		srate = ni->ni_rates.rs_nrates - 1;
+ath_rate/onoe/onoe.c:		srate = ni->ni_rates.rs_nrates - 1;
+ath_rate/onoe/onoe.c:	ath_rate_update(ni->ni_ic->ic_dev->priv, ni, (long) arg);
+ath_rate/onoe/onoe.c:	struct ieee80211_rateset *rs = &ni->ni_rates;
+ath_rate/onoe/onoe.c:		ether_sprintf(ni->ni_macaddr),
+ath_rate/onoe/onoe.c:	nrate = ni->ni_txrate;
+ath_rate/onoe/onoe.c:	if (nrate != ni->ni_txrate) {
+ath_rate/onoe/onoe.c:		    (rs->rs_rates[ni->ni_txrate] & IEEE80211_RATE_VAL) / 2,
+ath_rate/amrr/amrr.c:		__func__, ether_sprintf(ni->ni_macaddr),
+ath_rate/amrr/amrr.c:		ni->ni_rates.rs_nrates > 0 ?
+ath_rate/amrr/amrr.c:			(ni->ni_rates.rs_rates[rate] & IEEE80211_RATE_VAL) / 2 : 0);
+ath_rate/amrr/amrr.c:	ni->ni_txrate = rate;
+ath_rate/amrr/amrr.c:	if (ni->ni_rates.rs_nrates > 0) {
+ath_rate/amrr/amrr.c:			sc->sc_rixmap[ni->ni_rates.rs_rates[rate] & IEEE80211_RATE_VAL];
+ath_rate/amrr/amrr.c:				rix = sc->sc_rixmap[ni->ni_rates.rs_rates[rate]&IEEE80211_RATE_VAL];
+ath_rate/amrr/amrr.c:				rix = sc->sc_rixmap[ni->ni_rates.rs_rates[rate]&IEEE80211_RATE_VAL];
+ath_rate/amrr/amrr.c:#define	RATE(_ix)	(ni->ni_rates.rs_rates[(_ix)] & IEEE80211_RATE_VAL)
+ath_rate/amrr/amrr.c:	struct ieee80211vap *vap = ni->ni_vap;
+ath_rate/amrr/amrr.c:	KASSERT(ni->ni_rates.rs_nrates > 0, ("no rates"));
+ath_rate/amrr/amrr.c:		srate = ni->ni_rates.rs_nrates - 1;
+ath_rate/amrr/amrr.c:		srate = ni->ni_rates.rs_nrates - 1;
+ath_rate/amrr/amrr.c:	ath_rate_update(ni->ni_ic->ic_dev->priv, ni, (long) arg);
+ath_rate/amrr/amrr.c:#define is_max_rate(ni) ((ni->ni_txrate + 1) >= ni->ni_rates.rs_nrates)
+ath_rate/amrr/amrr.c:#define is_min_rate(ni) (ni->ni_txrate == 0)
+ath_rate/amrr/amrr.c:	old_rate = ni->ni_txrate;
+ath_rate/amrr/amrr.c:  			ni->ni_txrate++;
+ath_rate/amrr/amrr.c:			DPRINTF(sc, "increase rate to %d\n", ni->ni_txrate);
+ath_rate/amrr/amrr.c:  			ni->ni_txrate--;
+ath_rate/amrr/amrr.c:	if (is_enough(amn) || old_rate != ni->ni_txrate) {
+ath_rate/amrr/amrr.c:	if (old_rate != ni->ni_txrate)
+ath_rate/amrr/amrr.c:		ath_rate_update(sc, ni, ni->ni_txrate);
+ath_rate/minstrel/minstrel.c:	struct ieee80211vap *vap = ni->ni_vap;
+ath_rate/minstrel/minstrel.c:	sn->num_rates = ni->ni_rates.rs_nrates;
+ath_rate/minstrel/minstrel.c:        for (x = 0; x < ni->ni_rates.rs_nrates; x++) {
+ath_rate/minstrel/minstrel.c:		sn->rates[x].rate = ni->ni_rates.rs_rates[x] & IEEE80211_RATE_VAL;
+ath_rate/minstrel/minstrel.c:	ni->ni_txrate = 0;
+ath_rate/minstrel/minstrel.c:	sn->num_rates = ni->ni_rates.rs_nrates;
+ath_rate/minstrel/minstrel.c:			dev_info, __func__, ether_sprintf(ni->ni_macaddr),
+ath_rate/minstrel/minstrel.c:		for (; srate >= 0 && (ni->ni_rates.rs_rates[srate] & IEEE80211_RATE_VAL) != vap->iv_fixed_rate; srate--);
+ath_rate/minstrel/minstrel.c:		ni->ni_txrate = srate;
+ath_rate/minstrel/minstrel.c:			dev_info, __func__, ether_sprintf(ni->ni_macaddr), 
+ath_rate/minstrel/minstrel.c:	for (x = 0; x < ni->ni_rates.rs_nrates; x++) {
+ath_rate/minstrel/minstrel.c:	      for (x = 0; x < ni->ni_rates.rs_nrates; x++) 
+ath_rate/minstrel/minstrel.c:	ni->ni_txrate = sn->current_rate;
+ath_rate/minstrel/minstrel.c:        ath_rate_ctl_reset(ni->ni_ic->ic_dev->priv, ni);
+ath_rate/minstrel/minstrel.c:        struct ieee80211_rateset *rs = &ni->ni_rates;
+ath_rate/minstrel/minstrel.c:				p += sprintf(p, "out of room for node %s\n\n", ether_sprintf(ni->ni_macaddr));
+ath_rate/minstrel/minstrel.c:                if (memcmp(vap->iv_myaddr, ni->ni_macaddr, IEEE80211_ADDR_LEN) == 0)
+ath_rate/minstrel/minstrel.c:                p += sprintf(p, "rate data for node:: %s\n", ether_sprintf(ni->ni_macaddr));
+hal/README:including cardbus cards and mini-pci cards.  In addition many laptop
+hal/README:vendors use Atheros mini-pci cards for their builtin wireless
+hal/README:their own vendor and/or device id's to aid in BIOS-locking mini-pci
+net80211/ieee80211_proto.c:	struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_proto.c:	struct ieee80211com *ic = ni->ni_ic;
+net80211/ieee80211_proto.c:	srs = &ic->ic_sup_rates[ieee80211_chan2mode(ni->ni_chan)];
+net80211/ieee80211_proto.c:	nrs = &ni->ni_rates;
+net80211/ieee80211_proto.c:	if (ni->ni_vap == vap && ni->ni_associd != 0) {
+net80211/ieee80211_proto.c:	if (ni->ni_vap == vap)
+net80211/ieee80211_proto.c:							wds_ni->ni_chan = vap->iv_bss->ni_chan;
+net80211/ieee80211_proto.c:							wds_ni->ni_capinfo = ni->ni_capinfo;
+net80211/ieee80211_proto.c:							wds_ni->ni_associd = 1;
+net80211/ieee80211_proto.c:							wds_ni->ni_ath_flags = vap->iv_ath_cap;
+net80211/ieee80211_proto.c:			KASSERT(ni->ni_txrate < ni->ni_rates.rs_nrates,
+net80211/ieee80211_proto.c:				ni->ni_txrate));
+net80211/ieee80211_proto.c:					ether_sprintf(ni->ni_bssid));
+net80211/ieee80211_proto.c:					ni->ni_esslen);
+net80211/ieee80211_proto.c:					IEEE80211_RATE2MBS(ni->ni_rates.rs_rates[ni->ni_txrate]));
+net80211/ieee80211_proto.c:					ni->ni_macaddr);
+net80211/ieee80211_proto.c:				IEEE80211_SWBMISS_THRESHOLD * ni->ni_intval);
+net80211/ieee80211_proto.c:		if (ni->ni_authmode != IEEE80211_AUTH_8021X)
+net80211/ieee80211_node.h:#define	IEEE80211_NODE_AID(ni)			IEEE80211_AID(ni->ni_associd)
+net80211/ieee80211_node.h:#define	IEEE80211_NODE_STAT(ni,stat)		(ni->ni_stats.ns_##stat++)
+net80211/ieee80211_node.h:#define	IEEE80211_NODE_STAT_ADD(ni,stat,v)	(ni->ni_stats.ns_##stat += v)
+net80211/ieee80211_node.h:#define	IEEE80211_NODE_STAT_SET(ni,stat,v)	(ni->ni_stats.ns_##stat = v)
+net80211/ieee80211_node.h:	return (ni->ni_flags & IEEE80211_NODE_AUTH);
+net80211/ieee80211_node.c:	ni->ni_flags |= IEEE80211_NODE_AUTH;
+net80211/ieee80211_node.c:	ni->ni_inact_reload = ni->ni_vap->iv_inact_run;
+net80211/ieee80211_node.c:	ni->ni_flags &= ~IEEE80211_NODE_AUTH;
+net80211/ieee80211_node.c:	ni->ni_chan = chan;
+net80211/ieee80211_node.c:	if (ni->ni_vap->iv_flags & IEEE80211_F_XR)
+net80211/ieee80211_node.c:		ni->ni_rates = ic->ic_sup_xr_rates;
+net80211/ieee80211_node.c:	ni->ni_rates = ic->ic_sup_rates[ieee80211_chan2mode(chan)];
+net80211/ieee80211_node.c:	IEEE80211_ADDR_COPY(ni->ni_bssid, vap->iv_myaddr);
+net80211/ieee80211_node.c:	ni->ni_esslen = vap->iv_des_ssid[0].len;
+net80211/ieee80211_node.c:	memcpy(ni->ni_essid, vap->iv_des_ssid[0].ssid, ni->ni_esslen);
+net80211/ieee80211_node.c:	ni->ni_intval = ic->ic_lintval;
+net80211/ieee80211_node.c:		ni->ni_intval *= IEEE80211_XR_BEACON_FACTOR;
+net80211/ieee80211_node.c:		ni->ni_capinfo |= IEEE80211_CAPINFO_PRIVACY;
+net80211/ieee80211_node.c:		ni->ni_fhdwell = 200;	/* XXX */
+net80211/ieee80211_node.c:		ni->ni_fhindex = 1;
+net80211/ieee80211_node.c:		ni->ni_capinfo |= IEEE80211_CAPINFO_IBSS;	/* XXX */
+net80211/ieee80211_node.c:			IEEE80211_ADDR_COPY(ni->ni_bssid, vap->iv_des_bssid);
+net80211/ieee80211_node.c:			ni->ni_bssid[0] |= 0x02;	/* local bit for IBSS */
+net80211/ieee80211_node.c:		    IEEE80211_ADDR_COPY(ni->ni_bssid, vap->iv_des_bssid);
+net80211/ieee80211_node.c:		    ni->ni_bssid[0] = 0x00;
+net80211/ieee80211_node.c:		    ni->ni_bssid[1] = 0x00;
+net80211/ieee80211_node.c:		    ni->ni_bssid[2] = 0x00;
+net80211/ieee80211_node.c:		    ni->ni_bssid[3] = 0x00;
+net80211/ieee80211_node.c:		    ni->ni_bssid[4] = 0x00;
+net80211/ieee80211_node.c:		    ni->ni_bssid[5] = 0x00;
+net80211/ieee80211_node.c:		ni->ni_ath_flags = vap->iv_ath_cap;
+net80211/ieee80211_node.c:			ni->ni_ath_flags &= ~(IEEE80211_ATHC_TURBOP | IEEE80211_ATHC_AR);
+net80211/ieee80211_node.c:			ni->ni_ath_flags &= ~IEEE80211_ATHC_AR;
+net80211/ieee80211_node.c:		ni->ni_rates = ic->ic_sup_half_rates;
+net80211/ieee80211_node.c:		ni->ni_rates = ic->ic_sup_quarter_rates;
+net80211/ieee80211_node.c:		ni->ni_intval = ic->ic_lintval;
+net80211/ieee80211_node.c:		if (ni->ni_esslen == ssids[i].len &&
+net80211/ieee80211_node.c:		    memcmp(ni->ni_essid, ssids[i].ssid, ni->ni_esslen) == 0)
+net80211/ieee80211_node.c:	struct ieee80211com *ic = ni->ni_ic;
+net80211/ieee80211_node.c:	if (isclr(ic->ic_chan_active, ieee80211_chan2ieee(ic, ni->ni_chan)))
+net80211/ieee80211_node.c:		if ((ni->ni_capinfo & IEEE80211_CAPINFO_IBSS) == 0)
+net80211/ieee80211_node.c:		if ((ni->ni_capinfo & IEEE80211_CAPINFO_ESS) == 0)
+net80211/ieee80211_node.c:		if ((ni->ni_capinfo & IEEE80211_CAPINFO_PRIVACY) == 0)
+net80211/ieee80211_node.c:		if (ni->ni_capinfo & IEEE80211_CAPINFO_PRIVACY)
+net80211/ieee80211_node.c:	    !IEEE80211_ADDR_EQ(vap->iv_des_bssid, ni->ni_bssid))
+net80211/ieee80211_node.c:	struct ieee80211com *ic = ni->ni_ic;
+net80211/ieee80211_node.c:	if (isclr(ic->ic_chan_active, ieee80211_chan2ieee(ic, ni->ni_chan)))
+net80211/ieee80211_node.c:		if ((ni->ni_capinfo & IEEE80211_CAPINFO_IBSS) == 0)
+net80211/ieee80211_node.c:		if ((ni->ni_capinfo & IEEE80211_CAPINFO_ESS) == 0)
+net80211/ieee80211_node.c:		if ((ni->ni_capinfo & IEEE80211_CAPINFO_PRIVACY) == 0)
+net80211/ieee80211_node.c:		if (ni->ni_capinfo & IEEE80211_CAPINFO_PRIVACY)
+net80211/ieee80211_node.c:	    !IEEE80211_ADDR_EQ(vap->iv_des_bssid, ni->ni_bssid))
+net80211/ieee80211_node.c:	printf(" %c %s", fail ? '-' : '+', ether_sprintf(ni->ni_macaddr));
+net80211/ieee80211_node.c:	printf(" %s%c", ether_sprintf(ni->ni_bssid), fail & 0x20 ? '!' : ' ');
+net80211/ieee80211_node.c:		ieee80211_chan2ieee(ic, ni->ni_chan), fail & 0x01 ? '!' : ' ');
+net80211/ieee80211_node.c:	printf(" %+4d", ni->ni_rssi);
+net80211/ieee80211_node.c:		(ni->ni_capinfo & IEEE80211_CAPINFO_ESS) ? "ess" :
+net80211/ieee80211_node.c:			(ni->ni_capinfo & IEEE80211_CAPINFO_IBSS) ? "ibss" :
+net80211/ieee80211_node.c:	    	(ni->ni_capinfo & IEEE80211_CAPINFO_PRIVACY) ?  "wep" : "no",
+net80211/ieee80211_node.c:	ieee80211_print_essid(ni->ni_essid, ni->ni_esslen);
+net80211/ieee80211_node.c:	struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_node.c:	struct ieee80211com *ic = ni->ni_ic;
+net80211/ieee80211_node.c:	    IEEE80211_ADDR_EQ(ni->ni_bssid, vap->iv_bss->ni_bssid)) {
+net80211/ieee80211_node.c:		ether_sprintf(ni->ni_bssid),
+net80211/ieee80211_node.c:	ni->ni_authmode = vap->iv_bss->ni_authmode;		/* inherit authmode from iv_bss */
+net80211/ieee80211_node.c:	ni->ni_rsn = vap->iv_bss->ni_rsn; 
+net80211/ieee80211_node.c:	IEEE80211_ADDR_COPY(ni->ni_bssid, se->se_bssid);
+net80211/ieee80211_node.c:	ni->ni_esslen = se->se_ssid[1];
+net80211/ieee80211_node.c:	memcpy(ni->ni_essid, se->se_ssid + 2, ni->ni_esslen);
+net80211/ieee80211_node.c:	ni->ni_rstamp = se->se_rstamp;
+net80211/ieee80211_node.c:	ni->ni_tstamp.tsf = se->se_tstamp.tsf;
+net80211/ieee80211_node.c:	ni->ni_intval = IEEE80211_BINTVAL_SANITISE(se->se_intval);
+net80211/ieee80211_node.c:	ni->ni_capinfo = se->se_capinfo;
+net80211/ieee80211_node.c:	ni->ni_chan = se->se_chan;
+net80211/ieee80211_node.c:	ni->ni_timoff = se->se_timoff;
+net80211/ieee80211_node.c:	ni->ni_fhdwell = se->se_fhdwell;
+net80211/ieee80211_node.c:	ni->ni_fhindex = se->se_fhindex;
+net80211/ieee80211_node.c:	ni->ni_erp = se->se_erp;
+net80211/ieee80211_node.c:	ni->ni_rssi = se->se_rssi;
+net80211/ieee80211_node.c:		ieee80211_saveie(&ni->ni_wpa_ie, se->se_wpa_ie);
+net80211/ieee80211_node.c:		ieee80211_saveie(&ni->ni_rsn_ie, se->se_rsn_ie);
+net80211/ieee80211_node.c:		ieee80211_saveie(&ni->ni_wme_ie, se->se_wme_ie);
+net80211/ieee80211_node.c:	"%s: %p<%s> refcnt %d\n", __func__, ni, ether_sprintf(ni->ni_macaddr), 
+net80211/ieee80211_node.c:	struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_node.c:	struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_node.c:	if (ni->ni_flags & IEEE80211_NODE_PWR_MGT) {
+net80211/ieee80211_node.c:		ni->ni_flags &= ~IEEE80211_NODE_PWR_MGT;
+net80211/ieee80211_node.c:		if (ni->ni_flags & IEEE80211_NODE_UAPSD_TRIG) {
+net80211/ieee80211_node.c:			ni->ni_flags &= ~IEEE80211_NODE_UAPSD_TRIG;
+net80211/ieee80211_node.c:			IEEE80211_LOCK_IRQ(ni->ni_ic);
+net80211/ieee80211_node.c:			ni->ni_ic->ic_uapsdmaxtriggers--;
+net80211/ieee80211_node.c:			IEEE80211_UNLOCK_IRQ(ni->ni_ic);
+net80211/ieee80211_node.c:	ni->ni_flags &= ~IEEE80211_NODE_AREF;
+net80211/ieee80211_node.c:	ni->ni_associd = 0;
+net80211/ieee80211_node.c:	if (ni->ni_challenge != NULL) {
+net80211/ieee80211_node.c:		FREE(ni->ni_challenge, M_DEVBUF);
+net80211/ieee80211_node.c:		ni->ni_challenge = NULL;
+net80211/ieee80211_node.c:	if (ni->ni_rxfrag != NULL) {
+net80211/ieee80211_node.c:		dev_kfree_skb_any(ni->ni_rxfrag);
+net80211/ieee80211_node.c:		ni->ni_rxfrag = NULL;
+net80211/ieee80211_node.c:	ieee80211_crypto_delkey(vap, &ni->ni_ucastkey, ni);
+net80211/ieee80211_node.c:	ni->ni_rxkeyoff = 0;
+net80211/ieee80211_node.c:	struct ieee80211com *ic = ni->ni_ic;
+net80211/ieee80211_node.c:	if (ni->ni_wpa_ie != NULL)
+net80211/ieee80211_node.c:		FREE(ni->ni_wpa_ie, M_DEVBUF);
+net80211/ieee80211_node.c:	if (ni->ni_rsn_ie != NULL)
+net80211/ieee80211_node.c:		FREE(ni->ni_rsn_ie, M_DEVBUF);
+net80211/ieee80211_node.c:	if (ni->ni_wme_ie != NULL)
+net80211/ieee80211_node.c:		FREE(ni->ni_wme_ie, M_DEVBUF);
+net80211/ieee80211_node.c:	if (ni->ni_ath_ie != NULL)
+net80211/ieee80211_node.c:		FREE(ni->ni_ath_ie, M_DEVBUF);
+net80211/ieee80211_node.c:	return ni->ni_rssi;
+net80211/ieee80211_node.c:	IEEE80211_ADDR_COPY(ni->ni_macaddr, macaddr);
+net80211/ieee80211_node.c:	ni->ni_chan = IEEE80211_CHAN_ANYC;
+net80211/ieee80211_node.c:	ni->ni_authmode = IEEE80211_AUTH_OPEN;
+net80211/ieee80211_node.c:	ni->ni_txpower = ic->ic_txpowlimit;	/* max power */
+net80211/ieee80211_node.c:	ieee80211_crypto_resetkey(vap, &ni->ni_ucastkey, IEEE80211_KEYIX_NONE);
+net80211/ieee80211_node.c:	ni->ni_inact_reload = nt->nt_inact_init;
+net80211/ieee80211_node.c:	ni->ni_inact = ni->ni_inact_reload;
+net80211/ieee80211_node.c:	ni->ni_ath_defkeyindex = IEEE80211_INVAL_DEFKEY;
+net80211/ieee80211_node.c:	ni->ni_rxkeyoff = 0;
+net80211/ieee80211_node.c:	ni->ni_vap = vap;
+net80211/ieee80211_node.c:	ni->ni_ic = ic;
+net80211/ieee80211_node.c:	ni->ni_table = nt;
+net80211/ieee80211_node.c:	ni->ni_rxfrag = NULL;
+net80211/ieee80211_node.c:	ni->ni_challenge = NULL;
+net80211/ieee80211_node.c:		IEEE80211_ADDR_COPY(ni->ni_macaddr, macaddr);
+net80211/ieee80211_node.c:		IEEE80211_ADDR_COPY(ni->ni_bssid, vap->iv_bss->ni_bssid);
+net80211/ieee80211_node.c:		ni->ni_txpower = vap->iv_bss->ni_txpower;
+net80211/ieee80211_node.c:		ni->ni_vap = vap;
+net80211/ieee80211_node.c:		ieee80211_crypto_resetkey(vap, &ni->ni_ucastkey,
+net80211/ieee80211_node.c:		ni->ni_table = NULL;		/* NB: pedantic */
+net80211/ieee80211_node.c:		ni->ni_ic = ic;
+net80211/ieee80211_node.c:		ni->ni_rxfrag = NULL;
+net80211/ieee80211_node.c:		ni->ni_challenge = NULL;
+net80211/ieee80211_node.c:		ni->ni_authmode = vap->iv_bss->ni_authmode;
+net80211/ieee80211_node.c:		ni->ni_txpower = vap->iv_bss->ni_txpower;
+net80211/ieee80211_node.c:		ni->ni_vlan = vap->iv_bss->ni_vlan;	/* XXX?? */
+net80211/ieee80211_node.c:		IEEE80211_ADDR_COPY(ni->ni_bssid, vap->iv_bss->ni_bssid);
+net80211/ieee80211_node.c:		ni->ni_rsn = vap->iv_bss->ni_rsn;
+net80211/ieee80211_node.c:		ni->ni_rxfrag = NULL;
+net80211/ieee80211_node.c:		if (IEEE80211_ADDR_EQ(ni->ni_macaddr, macaddr)) {
+net80211/ieee80211_node.c:			IEEE80211_DPRINTF(ni->ni_vap, IEEE80211_MSG_NODE,
+net80211/ieee80211_node.c:				ni, ether_sprintf(ni->ni_macaddr),
+net80211/ieee80211_node.c:		ni->ni_rates = vap->iv_bss->ni_rates;
+net80211/ieee80211_node.c:		ni->ni_esslen = sp->ssid[1];
+net80211/ieee80211_node.c:		memcpy(ni->ni_essid, sp->ssid + 2, sp->ssid[1]);
+net80211/ieee80211_node.c:		IEEE80211_ADDR_COPY(ni->ni_bssid, wh->i_addr3);
+net80211/ieee80211_node.c:		memcpy(ni->ni_tstamp.data, sp->tstamp, sizeof(ni->ni_tstamp));
+net80211/ieee80211_node.c:		ni->ni_intval = IEEE80211_BINTVAL_SANITISE(sp->bintval);
+net80211/ieee80211_node.c:		ni->ni_capinfo = sp->capinfo;
+net80211/ieee80211_node.c:		ni->ni_chan = ic->ic_curchan;
+net80211/ieee80211_node.c:		ni->ni_fhdwell = sp->fhdwell;
+net80211/ieee80211_node.c:		ni->ni_fhindex = sp->fhindex;
+net80211/ieee80211_node.c:		ni->ni_erp = sp->erp;
+net80211/ieee80211_node.c:		ni->ni_timoff = sp->timoff;
+net80211/ieee80211_node.c:			ieee80211_saveie(&ni->ni_wme_ie, sp->wme);
+net80211/ieee80211_node.c:			ieee80211_saveie(&ni->ni_wpa_ie, sp->wpa);
+net80211/ieee80211_node.c:			ieee80211_saveie(&ni->ni_rsn_ie, sp->rsn);
+net80211/ieee80211_node.c:				ni->ni_flags |= IEEE80211_NODE_QOS;
+net80211/ieee80211_node.c:				ni->ni_capinfo |= IEEE80211_CAPINFO_SHORT_PREAMBLE;
+net80211/ieee80211_node.c:		"%s: %p<%s> refcnt %d\n", __func__, ni, ether_sprintf(ni->ni_macaddr), 
+net80211/ieee80211_node.c:	struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_node.c:	struct ieee80211_node_table *nt = ni->ni_table;
+net80211/ieee80211_node.c:		ether_sprintf(ni->ni_macaddr),
+net80211/ieee80211_node.c:		IEEE80211_AID_CLR(vap, ni->ni_associd);
+net80211/ieee80211_node.c:	struct ieee80211_node_table *nt = ni->ni_table;
+net80211/ieee80211_node.c:	struct ieee80211com *ic = ni->ni_ic;
+net80211/ieee80211_node.c:	IEEE80211_DPRINTF(ni->ni_vap, IEEE80211_MSG_NODE,
+net80211/ieee80211_node.c:		 ether_sprintf(ni->ni_macaddr), ieee80211_node_refcnt(ni) - 1);
+net80211/ieee80211_node.c:		if (ni->ni_table != NULL) {
+net80211/ieee80211_node.c:	IEEE80211_DPRINTF(ni->ni_vap, IEEE80211_MSG_NODE,
+net80211/ieee80211_node.c:		__func__, ni, ether_sprintf(ni->ni_macaddr),
+net80211/ieee80211_node.c:		ni->ni_table = NULL;		/* clear reference */
+net80211/ieee80211_node.c:		if (match != NULL && ni->ni_vap != match)
+net80211/ieee80211_node.c:		if (ni->ni_associd != 0) {
+net80211/ieee80211_node.c:			struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_node.c:				IEEE80211_AID_CLR(vap, ni->ni_associd);
+net80211/ieee80211_node.c:		if (ni->ni_associd != 0) {
+net80211/ieee80211_node.c:			struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_node.c:				IEEE80211_AID_CLR(vap, ni->ni_associd);
+net80211/ieee80211_node.c:		if (ni->ni_scangen == gen)	/* previously handled */
+net80211/ieee80211_node.c:		    (ni->ni_flags & IEEE80211_NODE_AREF) == 0)
+net80211/ieee80211_node.c:		ni->ni_scangen = gen;
+net80211/ieee80211_node.c:		if (ni->ni_rxfrag != NULL &&
+net80211/ieee80211_node.c:		    jiffies > ni->ni_rxfragstamp + HZ) {
+net80211/ieee80211_node.c:			dev_kfree_skb(ni->ni_rxfrag);
+net80211/ieee80211_node.c:			ni->ni_rxfrag = NULL;
+net80211/ieee80211_node.c:		if (ni == ni->ni_vap->iv_bss) {
+net80211/ieee80211_node.c:			if (ni->ni_inact > 0)
+net80211/ieee80211_node.c:				ni->ni_inact--;
+net80211/ieee80211_node.c:		ni->ni_inact--;
+net80211/ieee80211_node.c:		if (ni->ni_associd != 0 || isadhoc) {
+net80211/ieee80211_node.c:			struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_node.c:			if (0 < ni->ni_inact &&
+net80211/ieee80211_node.c:			    ni->ni_inact <= vap->iv_inact_probe) {
+net80211/ieee80211_node.c:		if (ni->ni_inact <= 0) {
+net80211/ieee80211_node.c:			IEEE80211_NOTE(ni->ni_vap,
+net80211/ieee80211_node.c:			ni->ni_vap->iv_stats.is_node_timeout++;
+net80211/ieee80211_node.c:			if (ni->ni_associd != 0) {
+net80211/ieee80211_node.c:		if (dev != NULL && ni->ni_vap->iv_dev != dev) 
+net80211/ieee80211_node.c:		if (ni->ni_scangen != gen) {
+net80211/ieee80211_node.c:			ni->ni_scangen = gen;
+net80211/ieee80211_node.c:		ether_sprintf(ni->ni_macaddr), ieee80211_node_refcnt(ni));
+net80211/ieee80211_node.c:		ni->ni_scangen, ni->ni_authmode, ni->ni_flags);
+net80211/ieee80211_node.c:		ni->ni_associd, ni->ni_txpower, ni->ni_vlan);
+net80211/ieee80211_node.c:	printf ("rxfragstamp %u\n", ni->ni_rxfragstamp);
+net80211/ieee80211_node.c:		       ni->ni_txseqs[i],
+net80211/ieee80211_node.c:		       ni->ni_rxseqs[i] >> IEEE80211_SEQ_SEQ_SHIFT,
+net80211/ieee80211_node.c:		       ni->ni_rxseqs[i] & IEEE80211_SEQ_FRAG_MASK);
+net80211/ieee80211_node.c:		ni->ni_rstamp, ni->ni_rssi, ni->ni_intval, ni->ni_capinfo);
+net80211/ieee80211_node.c:		ether_sprintf(ni->ni_bssid),
+net80211/ieee80211_node.c:		ni->ni_esslen, ni->ni_essid,
+net80211/ieee80211_node.c:		ni->ni_chan != IEEE80211_CHAN_ANYC ?
+net80211/ieee80211_node.c:			ni->ni_chan->ic_freq : IEEE80211_CHAN_ANY,
+net80211/ieee80211_node.c:		ni->ni_chan != IEEE80211_CHAN_ANYC ? ni->ni_chan->ic_flags : 0);
+net80211/ieee80211_node.c:		ni->ni_inact, ni->ni_txrate);
+net80211/ieee80211_node.c:	struct ieee80211com *ic = ni->ni_ic;
+net80211/ieee80211_node.c:	struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_node.c:	if ((ni->ni_capinfo & IEEE80211_CAPINFO_SHORT_SLOTTIME) == 0) {
+net80211/ieee80211_node.c:	if (!ieee80211_iserp_rateset(ic, &ni->ni_rates)) {
+net80211/ieee80211_node.c:		if ((ni->ni_capinfo & IEEE80211_CAPINFO_SHORT_PREAMBLE) == 0) {
+net80211/ieee80211_node.c:		ni->ni_flags |= IEEE80211_NODE_ERP;
+net80211/ieee80211_node.c:	struct ieee80211com *ic = ni->ni_ic;
+net80211/ieee80211_node.c:	struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_node.c:	if (ni->ni_associd == 0) {
+net80211/ieee80211_node.c:		ni->ni_associd = aid | 0xc000;
+net80211/ieee80211_node.c:		IEEE80211_AID_SET(vap, ni->ni_associd);
+net80211/ieee80211_node.c:		if (ni->ni_vap->iv_flags & IEEE80211_F_XR)
+net80211/ieee80211_node.c:		(ni->ni_capinfo & IEEE80211_CAPINFO_SHORT_PREAMBLE) ? "short" : "long",
+net80211/ieee80211_node.c:		ni->ni_flags & IEEE80211_NODE_QOS ? ", QoS" : "",
+net80211/ieee80211_node.c:	ni->ni_inact_reload = vap->iv_inact_auth;
+net80211/ieee80211_node.c:	ni->ni_inact = ni->ni_inact_reload;
+net80211/ieee80211_node.c:	struct ieee80211com *ic = ni->ni_ic;
+net80211/ieee80211_node.c:	struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_node.c:	if ((ni->ni_capinfo & IEEE80211_CAPINFO_SHORT_SLOTTIME) == 0) {
+net80211/ieee80211_node.c:	if ((ni->ni_flags & IEEE80211_NODE_ERP) == 0) {
+net80211/ieee80211_node.c:	struct ieee80211com *ic = ni->ni_ic;
+net80211/ieee80211_node.c:	struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_node.c:	struct ieee80211_node_table *nt = ni->ni_table;
+net80211/ieee80211_node.c:	if (ni->ni_associd == 0)
+net80211/ieee80211_node.c:		IEEE80211_AID_CLR(vap, ni->ni_associd);
+net80211/ieee80211_node.c:	ni->ni_associd = 0;
+net80211/ieee80211_node.c:	if (ni->ni_vap->iv_flags & IEEE80211_F_XR)
+net80211/ieee80211_node.c:		ieee80211_remove_wds_addr(nt,ni->ni_macaddr);
+net80211/ieee80211_node.c:			if (ni->ni_capinfo & IEEE80211_CAPINFO_IBSS) {
+net80211/ieee80211_node.c:			if (memcmp(ni->ni_vap->iv_myaddr, ni->ni_macaddr, 
+net80211/ieee80211_node.c:			if (IEEE80211_AID(ni->ni_associd) != 0) {
+net80211/ieee80211_node.c:		struct ieee80211_node_table *nt = ni->ni_table;
+net80211/ieee80211_node.c:		IEEE80211_ADDR_COPY(ni->ni_bssid, vap->iv_bss->ni_bssid);
+net80211/ieee80211_node.c:		ni->ni_prev_vap = ni->ni_vap;
+net80211/ieee80211_node.c:		ni->ni_vap = vap;
+net80211/ieee80211_node.c:		ni->ni_ic = vap->iv_ic;
+net80211/ieee80211_node.c:		if(nt && ieee80211_find_node(nt, ni->ni_macaddr) != ni) {
+net80211/ieee80211_node.c:			int hash = IEEE80211_NODE_HASH(ni->ni_macaddr);
+net80211/ieee80211_node.c:			ni->ni_table = nt;
+net80211/ieee80211_beacon.c:	struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_beacon.c:	struct ieee80211com *ic = ni->ni_ic;
+net80211/ieee80211_beacon.c:	struct ieee80211_rateset *rs = &ni->ni_rates;
+net80211/ieee80211_beacon.c:	*(__le16 *)frm = htole16(ni->ni_intval);
+net80211/ieee80211_beacon.c:		*frm++ = ni->ni_esslen;
+net80211/ieee80211_beacon.c:		memcpy(frm, ni->ni_essid, ni->ni_esslen);
+net80211/ieee80211_beacon.c:		frm += ni->ni_esslen;
+net80211/ieee80211_beacon.c:	struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_beacon.c:	struct ieee80211com *ic = ni->ni_ic;
+net80211/ieee80211_beacon.c:	rs = &ni->ni_rates;
+net80211/ieee80211_beacon.c:		 + 2 + ni->ni_esslen			/* ssid */
+net80211/ieee80211_beacon.c:	struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_beacon.c:	struct ieee80211com *ic = ni->ni_ic;
+net80211/ieee80211_linux.c:	struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_linux.c:		IEEE80211_ADDR_COPY(wreq.addr.sa_data, ni->ni_bssid);
+net80211/ieee80211_linux.c:		IEEE80211_ADDR_COPY(wreq.addr.sa_data, ni->ni_macaddr);
+net80211/ieee80211_linux.c:	struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_linux.c:		IEEE80211_ADDR_COPY(wreq.addr.sa_data, ni->ni_macaddr);
+net80211/ieee80211_linux.c:	struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_linux.c:			ether_sprintf(ni->ni_macaddr), ni->ni_stats.ns_rx_data, 
+net80211/ieee80211_linux.c:			ni->ni_stats.ns_rx_bytes, ni->ni_stats.ns_tx_data, 
+net80211/ieee80211_linux.c:			ni->ni_stats.ns_tx_bytes);
+net80211/ieee80211_linux.c:		if (ni->ni_vap == vap &&
+net80211/ieee80211_linux.c:		    0 != memcmp(vap->iv_myaddr, ni->ni_macaddr, IEEE80211_ADDR_LEN)) {
+net80211/ieee80211_linux.c:			jiffies_to_timespec(jiffies - ni->ni_last_rx, &t);
+net80211/ieee80211_linux.c:			p += sprintf(p, "macaddr: <%s>\n", ether_sprintf(ni->ni_macaddr));
+net80211/ieee80211_linux.c:			p += sprintf(p, " rssi %d\n", ni->ni_rssi);
+net80211/ieee80211_wireless.c:	rs = &ni->ni_rates;
+net80211/ieee80211_wireless.c:		if (ni && (ni->ni_vap == vap)) {
+net80211/ieee80211_wireless.c:			set_quality(&spy_stat[i], ni->ni_rssi, ic->ic_channoise);
+net80211/ieee80211_wireless.c:			if (ni->ni_rstamp != vap->iv_spy.ts_rssi[i]) {
+net80211/ieee80211_wireless.c:				vap->iv_spy.ts_rssi[i] = ni->ni_rstamp;
+net80211/ieee80211_wireless.c:			if (!IEEE80211_ADDR_EQ(ik->ik_macaddr, ni->ni_bssid))
+net80211/ieee80211_wireless.c:		wk = &ni->ni_ucastkey;
+net80211/ieee80211_wireless.c:		    ni != NULL ? ni->ni_macaddr : ik->ik_macaddr, ni))
+net80211/ieee80211_wireless.c:		wk = &ni->ni_ucastkey;
+net80211/ieee80211_wireless.c:		ieee80211_crypto_delkey(vap, &ni->ni_ucastkey, ni);
+net80211/ieee80211_wireless.c:	if (ni->ni_associd != 0) {
+net80211/ieee80211_wireless.c:				if (dev == ni->ni_vap->iv_dev)
+net80211/ieee80211_wireless.c:		memset(&ni->ni_stats, 0, sizeof(struct ieee80211_nodestats));
+net80211/ieee80211_wireless.c:	if (ni->ni_wpa_ie != NULL) {
+net80211/ieee80211_wireless.c:		int ielen = ni->ni_wpa_ie[1] + 2;
+net80211/ieee80211_wireless.c:		memcpy(wpaie.wpa_ie, ni->ni_wpa_ie, ielen);
+net80211/ieee80211_wireless.c:	if (ni->ni_rsn_ie != NULL) {
+net80211/ieee80211_wireless.c:		int ielen = ni->ni_rsn_ie[1] + 2;
+net80211/ieee80211_wireless.c:		memcpy(wpaie.rsn_ie, ni->ni_rsn_ie, ielen);
+net80211/ieee80211_wireless.c:	error = copy_to_user(iwr->u.data.pointer + off, &ni->ni_stats,
+net80211/ieee80211_wireless.c:	if (ni->ni_rsn_ie != NULL)
+net80211/ieee80211_wireless.c:		*ielen += 2+ni->ni_rsn_ie[1];
+net80211/ieee80211_wireless.c:	if (ni->ni_wpa_ie != NULL)
+net80211/ieee80211_wireless.c:		*ielen += 2+ni->ni_wpa_ie[1];
+net80211/ieee80211_wireless.c:	if (ni->ni_wme_ie != NULL)
+net80211/ieee80211_wireless.c:		*ielen += 2+ni->ni_wme_ie[1];
+net80211/ieee80211_wireless.c:	if (ni->ni_ath_ie != NULL)
+net80211/ieee80211_wireless.c:		*ielen += 2+ni->ni_ath_ie[1];
+net80211/ieee80211_wireless.c:	struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_wireless.c:	    ni->ni_associd == 0)				/* only associated stations or a WDS peer */
+net80211/ieee80211_wireless.c:	struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_wireless.c:	    ni->ni_associd == 0)				/* only associated stations or a WDS peer */
+net80211/ieee80211_wireless.c:	if (ni->ni_chan == IEEE80211_CHAN_ANYC)			/* XXX bogus entry */
+net80211/ieee80211_wireless.c:	si->isi_freq = ni->ni_chan->ic_freq;
+net80211/ieee80211_wireless.c:	si->isi_flags = ni->ni_chan->ic_flags;
+net80211/ieee80211_wireless.c:	si->isi_state = ni->ni_flags;
+net80211/ieee80211_wireless.c:	si->isi_authmode = ni->ni_authmode;
+net80211/ieee80211_wireless.c:	si->isi_capinfo = ni->ni_capinfo;
+net80211/ieee80211_wireless.c:	si->isi_athflags = ni->ni_ath_flags;
+net80211/ieee80211_wireless.c:	si->isi_erp = ni->ni_erp;
+net80211/ieee80211_wireless.c:	IEEE80211_ADDR_COPY(si->isi_macaddr, ni->ni_macaddr);
+net80211/ieee80211_wireless.c:	si->isi_nrates = ni->ni_rates.rs_nrates;
+net80211/ieee80211_wireless.c:	memcpy(si->isi_rates, ni->ni_rates.rs_rates, si->isi_nrates);
+net80211/ieee80211_wireless.c:	si->isi_txrate = ni->ni_txrate;
+net80211/ieee80211_wireless.c:	si->isi_associd = ni->ni_associd;
+net80211/ieee80211_wireless.c:	si->isi_txpower = ni->ni_txpower;
+net80211/ieee80211_wireless.c:	si->isi_vlan = ni->ni_vlan;
+net80211/ieee80211_wireless.c:	if (ni->ni_flags & IEEE80211_NODE_QOS) {
+net80211/ieee80211_wireless.c:		memcpy(si->isi_txseqs, ni->ni_txseqs, sizeof(ni->ni_txseqs));
+net80211/ieee80211_wireless.c:		memcpy(si->isi_rxseqs, ni->ni_rxseqs, sizeof(ni->ni_rxseqs));
+net80211/ieee80211_wireless.c:		si->isi_txseqs[0] = ni->ni_txseqs[0];
+net80211/ieee80211_wireless.c:		si->isi_rxseqs[0] = ni->ni_rxseqs[0];
+net80211/ieee80211_wireless.c:	si->isi_uapsd = ni->ni_uapsd;
+net80211/ieee80211_wireless.c:	else if (ni->ni_associd != 0)
+net80211/ieee80211_wireless.c:	si->isi_inact = (si->isi_inact - ni->ni_inact) * IEEE80211_INACT_WAIT;
+net80211/ieee80211_wireless.c:	if (ni->ni_rsn_ie != NULL) {
+net80211/ieee80211_wireless.c:		memcpy(cp, ni->ni_rsn_ie, 2 + ni->ni_rsn_ie[1]);
+net80211/ieee80211_wireless.c:		cp += 2 + ni->ni_rsn_ie[1];
+net80211/ieee80211_wireless.c:	if (ni->ni_wpa_ie != NULL) {
+net80211/ieee80211_wireless.c:		memcpy(cp, ni->ni_wpa_ie, 2 + ni->ni_wpa_ie[1]);
+net80211/ieee80211_wireless.c:		cp += 2 + ni->ni_wpa_ie[1];
+net80211/ieee80211_wireless.c:	if (ni->ni_wme_ie != NULL) {
+net80211/ieee80211_wireless.c:		memcpy(cp, ni->ni_wme_ie, 2 + ni->ni_wme_ie[1]);
+net80211/ieee80211_wireless.c:		cp += 2 + ni->ni_wme_ie[1];
+net80211/ieee80211_wireless.c:	if (ni->ni_ath_ie != NULL) {
+net80211/ieee80211_wireless.c:		memcpy(cp, ni->ni_ath_ie, 2 + ni->ni_ath_ie[1]);
+net80211/ieee80211_wireless.c:		cp += 2 + ni->ni_ath_ie[1];
+net80211/ieee80211_input.c:			if (IEEE80211_ADDR_EQ(ni->ni_macaddr,
+net80211/ieee80211_input.c:					 ni->ni_macaddr));
+net80211/ieee80211_input.c:				memcpy(thr.addr.sa_data, ni->ni_macaddr,
+net80211/ieee80211_input.c:	struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_input.c:	ni->ni_inact = ni->ni_inact_reload;
+net80211/ieee80211_input.c:			ni->ni_macaddr, NULL,
+net80211/ieee80211_input.c:			ni->ni_macaddr, NULL, "wrong version %x", wh->i_fc[0]);
+net80211/ieee80211_input.c:			if (!IEEE80211_ADDR_EQ(bssid, ni->ni_bssid)) {
+net80211/ieee80211_input.c:						IEEE80211_MSG_ANY, ni->ni_macaddr,
+net80211/ieee80211_input.c:						IEEE80211_MSG_ANY, ni->ni_macaddr,
+net80211/ieee80211_input.c:					IEEE80211_MSG_ANY, ni->ni_macaddr,
+net80211/ieee80211_input.c:		ni->ni_rssi = rssi;
+net80211/ieee80211_input.c:		ni->ni_rstamp = rstamp;
+net80211/ieee80211_input.c:		ni->ni_last_rx = jiffies;
+net80211/ieee80211_input.c:			    IEEE80211_SEQ_LEQ(rxseq, ni->ni_rxseqs[tid])) {
+net80211/ieee80211_input.c:					ni->ni_rxseqs[tid] >>
+net80211/ieee80211_input.c:					ni->ni_rxseqs[tid] &
+net80211/ieee80211_input.c:			ni->ni_rxseqs[tid] = rxseq;
+net80211/ieee80211_input.c:			if (ni->ni_associd == 0) {
+net80211/ieee80211_input.c:			if (!(ni->ni_flags & IEEE80211_NODE_UAPSD)) {
+net80211/ieee80211_input.c:				    (ni->ni_flags & IEEE80211_NODE_PWR_MGT))
+net80211/ieee80211_input.c:			} else if (ni->ni_flags & IEEE80211_NODE_PS_CHANGED) {
+net80211/ieee80211_input.c:				if ((*(__le16 *)(&wh->i_seq[0])) == ni->ni_pschangeseq) {
+net80211/ieee80211_input.c:					ni->ni_flags &= ~IEEE80211_NODE_PS_CHANGED;
+net80211/ieee80211_input.c:				ni->ni_macaddr, "data", "%s", "demic error");
+net80211/ieee80211_input.c:				ni->ni_macaddr, "data", "%s", "decap error");
+net80211/ieee80211_input.c:					ni->ni_macaddr, "data", "%s", "decap error");
+net80211/ieee80211_input.c:					ni->ni_macaddr, "data", "%s", "decap error");
+net80211/ieee80211_input.c:				ni->ni_macaddr, "mgt", "too short: len %u",
+net80211/ieee80211_input.c:	if (!more_frag && fragno == 0 && ni->ni_rxfrag == NULL)
+net80211/ieee80211_input.c:	if (ni->ni_table == NULL) {
+net80211/ieee80211_input.c:	 * Use this lock to make sure ni->ni_rxfrag is
+net80211/ieee80211_input.c:	IEEE80211_NODE_LOCK_IRQ(ni->ni_table);
+net80211/ieee80211_input.c:	 * ni->ni_rxfrag for at least 1 second, or in
+net80211/ieee80211_input.c:	ni->ni_rxfragstamp = jiffies;
+net80211/ieee80211_input.c:	IEEE80211_NODE_UNLOCK_IRQ(ni->ni_table);
+net80211/ieee80211_input.c:	if (ni->ni_rxfrag) {
+net80211/ieee80211_input.c:		lwh = (struct ieee80211_frame *) ni->ni_rxfrag->data;
+net80211/ieee80211_input.c:		    || (ni->ni_rxfrag->end - ni->ni_rxfrag->tail <
+net80211/ieee80211_input.c:			dev_kfree_skb(ni->ni_rxfrag);
+net80211/ieee80211_input.c:			ni->ni_rxfrag = NULL;
+net80211/ieee80211_input.c: 	if (ni->ni_rxfrag == NULL && fragno == 0) {
+net80211/ieee80211_input.c:		ni->ni_rxfrag = skb;
+net80211/ieee80211_input.c:				ni->ni_rxfrag = skb_copy(skb, GFP_ATOMIC);
+net80211/ieee80211_input.c:				 (ni->ni_vap->iv_dev->mtu + hdrlen)) {
+net80211/ieee80211_input.c:				ni->ni_rxfrag = skb_copy_expand(skb, 0,
+net80211/ieee80211_input.c:					(ni->ni_vap->iv_dev->mtu + hdrlen) -
+net80211/ieee80211_input.c:		if (ni->ni_rxfrag) {
+net80211/ieee80211_input.c:				ni->ni_rxfrag->data;
+net80211/ieee80211_input.c:			memcpy(skb_tail_pointer(ni->ni_rxfrag),
+net80211/ieee80211_input.c:			skb_put(ni->ni_rxfrag, skb->len - hdrlen);
+net80211/ieee80211_input.c:		skb = ni->ni_rxfrag;
+net80211/ieee80211_input.c:		ni->ni_rxfrag = NULL;
+net80211/ieee80211_input.c:	struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_input.c:		if (ni->ni_vlan != 0 && vap->iv_vlgrp != NULL) {
+net80211/ieee80211_input.c:			vlan_hwaccel_receive_skb(skb, vap->iv_vlgrp, ni->ni_vlan);
+net80211/ieee80211_input.c:	struct ieee80211_rateset *rs = &ni->ni_rates;
+net80211/ieee80211_input.c:			struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_input.c:	struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_input.c:	if (ni->ni_authmode == IEEE80211_AUTH_SHARED) {
+net80211/ieee80211_input.c:			ni->ni_macaddr, "open auth",
+net80211/ieee80211_input.c:			"bad sta auth mode %u", ni->ni_authmode);
+net80211/ieee80211_input.c:				"%s: %p<%s> refcnt %d\n", __func__, ni, ether_sprintf(ni->ni_macaddr), 
+net80211/ieee80211_input.c:			"%s: %p<%s> refcnt %d\n", __func__, ni, ether_sprintf(ni->ni_macaddr), 
+net80211/ieee80211_input.c:		} else if ((ni->ni_flags & IEEE80211_NODE_AREF) == 0)
+net80211/ieee80211_input.c:		ni->ni_flags |= IEEE80211_NODE_AREF;
+net80211/ieee80211_input.c:		if (ni->ni_authmode != IEEE80211_AUTH_8021X)
+net80211/ieee80211_input.c:	struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_input.c:	if (ni->ni_challenge == NULL)
+net80211/ieee80211_input.c:		MALLOC(ni->ni_challenge, u_int32_t*, IEEE80211_CHALLENGE_LEN,
+net80211/ieee80211_input.c:	if (ni->ni_challenge == NULL) {
+net80211/ieee80211_input.c:		IEEE80211_NOTE(ni->ni_vap,
+net80211/ieee80211_input.c:	return (ni->ni_challenge != NULL);
+net80211/ieee80211_input.c:	struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_input.c:			ni->ni_macaddr, "shared key auth",
+net80211/ieee80211_input.c:	if (ni->ni_authmode != IEEE80211_AUTH_AUTO &&
+net80211/ieee80211_input.c:	    ni->ni_authmode != IEEE80211_AUTH_SHARED) {
+net80211/ieee80211_input.c:			ni->ni_macaddr, "shared key auth",
+net80211/ieee80211_input.c:			"bad sta auth mode %u", ni->ni_authmode);
+net80211/ieee80211_input.c:				ni->ni_macaddr, "shared key auth",
+net80211/ieee80211_input.c:				ni->ni_macaddr, "shared key auth",
+net80211/ieee80211_input.c:				ni->ni_macaddr, "shared key auth",
+net80211/ieee80211_input.c:			ni->ni_macaddr, "shared key auth",
+net80211/ieee80211_input.c:				ni->ni_macaddr, "shared key auth",
+net80211/ieee80211_input.c:				"%s: %p<%s> refcnt %d\n", __func__, ni, ether_sprintf(ni->ni_macaddr), 
+net80211/ieee80211_input.c:				if ((ni->ni_flags & IEEE80211_NODE_AREF) == 0)
+net80211/ieee80211_input.c:			ni->ni_flags |= IEEE80211_NODE_AREF;
+net80211/ieee80211_input.c:			ni->ni_rssi = rssi;
+net80211/ieee80211_input.c:			ni->ni_rstamp = rstamp;
+net80211/ieee80211_input.c:			ni->ni_last_rx = jiffies;
+net80211/ieee80211_input.c:			get_random_bytes(ni->ni_challenge,
+net80211/ieee80211_input.c:					ni->ni_macaddr, "shared key response",
+net80211/ieee80211_input.c:			if (ni->ni_challenge == NULL) {
+net80211/ieee80211_input.c:					ni->ni_macaddr, "shared key response",
+net80211/ieee80211_input.c:			if (memcmp(ni->ni_challenge, &challenge[2],
+net80211/ieee80211_input.c:					ni->ni_macaddr, "shared key response",
+net80211/ieee80211_input.c:				ni->ni_macaddr, "shared key auth",
+net80211/ieee80211_input.c:			if (ni->ni_challenge != NULL) {
+net80211/ieee80211_input.c:				FREE(ni->ni_challenge, M_DEVBUF);
+net80211/ieee80211_input.c:				ni->ni_challenge = NULL;
+net80211/ieee80211_input.c:			memcpy(ni->ni_challenge, &challenge[2], challenge[1]);
+net80211/ieee80211_input.c:		IEEE80211_DISCARD_IE(ni->ni_vap,
+net80211/ieee80211_input.c:	ni->ni_uapsd = frm[WME_CAPINFO_IE_OFFSET];
+net80211/ieee80211_input.c:	if (ni->ni_uapsd) {
+net80211/ieee80211_input.c:		ni->ni_flags |= IEEE80211_NODE_UAPSD;
+net80211/ieee80211_input.c:		switch (WME_UAPSD_MAXSP(ni->ni_uapsd)) {
+net80211/ieee80211_input.c:			ni->ni_uapsd_maxsp = 2; break;
+net80211/ieee80211_input.c:			ni->ni_uapsd_maxsp = 4; break;
+net80211/ieee80211_input.c:			ni->ni_uapsd_maxsp = 6; break;
+net80211/ieee80211_input.c:			ni->ni_uapsd_maxsp = WME_UAPSD_NODE_MAXQDEPTH;
+net80211/ieee80211_input.c:	IEEE80211_NOTE(ni->ni_vap, IEEE80211_MSG_POWER, ni,
+net80211/ieee80211_input.c:		"UAPSD bit settings from STA: %02x", ni->ni_uapsd);
+net80211/ieee80211_input.c:	struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_input.c:	struct ieee80211com *ic = ni->ni_ic;
+net80211/ieee80211_input.c:	ni->ni_ath_flags = athIe->athAdvCap_capability;
+net80211/ieee80211_input.c:	if (ni->ni_ath_flags & IEEE80211_ATHC_COMP)
+net80211/ieee80211_input.c:		ni->ni_ath_defkeyindex = LE_READ_2(&athIe->athAdvCap_defKeyIndex);
+net80211/ieee80211_input.c:		athIe->athAdvCap_capability, ni->ni_ath_flags,
+net80211/ieee80211_input.c:		ni->ni_ath_defkeyindex);
+net80211/ieee80211_input.c:	ni->ni_ath_flags = athIe->athAdvCap_capability;
+net80211/ieee80211_input.c:	if (ni->ni_ath_flags & IEEE80211_ATHC_COMP)
+net80211/ieee80211_input.c:		ni->ni_ath_defkeyindex = LE_READ_2(&athIe->athAdvCap_defKeyIndex);
+net80211/ieee80211_input.c:	ieee80211_saveie(&ni->ni_ath_ie, ie);
+net80211/ieee80211_input.c:	struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_input.c:			u_int32_t expected = ni->ni_intval * cnt_diff;
+net80211/ieee80211_input.c:						elapsed / ni->ni_intval,
+net80211/ieee80211_input.c:						elapsed * 100 / ni->ni_intval 
+net80211/ieee80211_input.c:				  * ni->ni_intval + 10));
+net80211/ieee80211_input.c:		    vap->iv_csa_count * ni->ni_intval + 10);
+net80211/ieee80211_input.c:	struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_input.c:	IEEE80211_ADDR_COPY(eh->ether_shost, ni->ni_macaddr);
+net80211/ieee80211_input.c:	struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_input.c:		    (vap->iv_opmode == IEEE80211_M_STA && ni->ni_associd) ||
+net80211/ieee80211_input.c:		    ni->ni_associd != 0 &&
+net80211/ieee80211_input.c:		    IEEE80211_ADDR_EQ(wh->i_addr2, ni->ni_bssid)) {
+net80211/ieee80211_input.c:			memcpy(ni->ni_tstamp.data, scan.tstamp,
+net80211/ieee80211_input.c:				sizeof(ni->ni_tstamp));
+net80211/ieee80211_input.c:			if (ni->ni_intval != scan.bintval) {
+net80211/ieee80211_input.c:					ni->ni_intval, scan.bintval);
+net80211/ieee80211_input.c:                               if (!ni->ni_intval_end) {
+net80211/ieee80211_input.c:                                       ni->ni_intval_cnt = 0;
+net80211/ieee80211_input.c:                                       ni->ni_intval_old = ni->ni_intval;
+net80211/ieee80211_input.c:                                       msecs = (ni->ni_intval_old * 1024 * 10) / 1000;
+net80211/ieee80211_input.c:                                       ni->ni_intval_end = jiffies +
+net80211/ieee80211_input.c:                               if (scan.bintval > ni->ni_intval) {
+net80211/ieee80211_input.c:                                       ni->ni_intval = scan.bintval;
+net80211/ieee80211_input.c:                       if (ni->ni_intval_end) {
+net80211/ieee80211_input.c:                               if (scan.bintval == ni->ni_intval_old)
+net80211/ieee80211_input.c:                                       ni->ni_intval_cnt++;
+net80211/ieee80211_input.c:                               if (!time_before(jiffies, ni->ni_intval_end)) {
+net80211/ieee80211_input.c:                                                      ni->ni_intval_cnt);
+net80211/ieee80211_input.c:                                       ni->ni_intval_end = 0;
+net80211/ieee80211_input.c:                                       if (ni->ni_intval_cnt == 0) {
+net80211/ieee80211_input.c:                                                              ni->ni_intval_old, scan.bintval);
+net80211/ieee80211_input.c:				ni->ni_intval = scan.bintval;
+net80211/ieee80211_input.c:			if (ni->ni_erp != scan.erp) {
+net80211/ieee80211_input.c:					ni->ni_erp, scan.erp);
+net80211/ieee80211_input.c:				ni->ni_erp = scan.erp;
+net80211/ieee80211_input.c:			if ((ni->ni_capinfo ^ scan.capinfo) & IEEE80211_CAPINFO_SHORT_SLOTTIME) {
+net80211/ieee80211_input.c:					ni->ni_capinfo, scan.capinfo);
+net80211/ieee80211_input.c:					(ni->ni_capinfo & IEEE80211_CAPINFO_SHORT_SLOTTIME));
+net80211/ieee80211_input.c:				ni->ni_capinfo = scan.capinfo;
+net80211/ieee80211_input.c:			    (ni->ni_flags & IEEE80211_NODE_QOS)) {
+net80211/ieee80211_input.c:						ni->ni_flags |= IEEE80211_NODE_UAPSD;
+net80211/ieee80211_input.c:				ni->ni_flags &= ~IEEE80211_NODE_UAPSD;
+net80211/ieee80211_input.c:				int aid = IEEE80211_AID(ni->ni_associd);
+net80211/ieee80211_input.c:			if (!IEEE80211_ADDR_EQ(wh->i_addr2, ni->ni_macaddr)) {
+net80211/ieee80211_input.c:				ni->ni_esslen = scan.ssid[1];
+net80211/ieee80211_input.c:				memcpy(ni->ni_essid, scan.ssid + 2, scan.ssid[1]);
+net80211/ieee80211_input.c:				IEEE80211_ADDR_COPY(ni->ni_bssid, wh->i_addr3);
+net80211/ieee80211_input.c:				memcpy(ni->ni_tstamp.data, scan.tstamp,
+net80211/ieee80211_input.c:					sizeof(ni->ni_tstamp));
+net80211/ieee80211_input.c:				ni->ni_intval = IEEE80211_BINTVAL_SANITISE(scan.bintval);
+net80211/ieee80211_input.c:				ni->ni_capinfo = scan.capinfo;
+net80211/ieee80211_input.c:				ni->ni_chan = ic->ic_curchan;
+net80211/ieee80211_input.c:				ni->ni_fhdwell = scan.fhdwell;
+net80211/ieee80211_input.c:				ni->ni_fhindex = scan.fhindex;
+net80211/ieee80211_input.c:				ni->ni_erp = scan.erp;
+net80211/ieee80211_input.c:				ni->ni_timoff = scan.timoff;
+net80211/ieee80211_input.c:					ieee80211_saveie(&ni->ni_wme_ie, scan.wme);
+net80211/ieee80211_input.c:					ieee80211_saveie(&ni->ni_wpa_ie, scan.wpa);
+net80211/ieee80211_input.c:					ieee80211_saveie(&ni->ni_rsn_ie, scan.rsn);
+net80211/ieee80211_input.c:				ni->ni_rssi = rssi;
+net80211/ieee80211_input.c:				ni->ni_rstamp = rstamp;
+net80211/ieee80211_input.c:				ni->ni_last_rx = jiffies;
+net80211/ieee80211_input.c:		ni->ni_rssi = rssi;
+net80211/ieee80211_input.c:		ni->ni_rstamp = rstamp;
+net80211/ieee80211_input.c:		ni->ni_last_rx = jiffies;
+net80211/ieee80211_input.c:			rsn_parm = ni->ni_rsn;
+net80211/ieee80211_input.c:		if (ni->ni_challenge != NULL) {
+net80211/ieee80211_input.c:			FREE(ni->ni_challenge, M_DEVBUF);
+net80211/ieee80211_input.c:			ni->ni_challenge = NULL;
+net80211/ieee80211_input.c:		if (ni->ni_associd != 0 && 
+net80211/ieee80211_input.c:			if ((ni->ni_capinfo & IEEE80211_CAPINFO_SHORT_SLOTTIME)
+net80211/ieee80211_input.c:		ni->ni_rssi = rssi;
+net80211/ieee80211_input.c:		ni->ni_rstamp = rstamp;
+net80211/ieee80211_input.c:		ni->ni_last_rx = jiffies;
+net80211/ieee80211_input.c:		ni->ni_intval = IEEE80211_BINTVAL_SANITISE(bintval);
+net80211/ieee80211_input.c:		ni->ni_capinfo = capinfo;
+net80211/ieee80211_input.c:		ni->ni_chan = ic->ic_curchan;
+net80211/ieee80211_input.c:		ni->ni_fhdwell = vap->iv_bss->ni_fhdwell;
+net80211/ieee80211_input.c:		ni->ni_fhindex = vap->iv_bss->ni_fhindex;
+net80211/ieee80211_input.c:			ieee80211_saveie(&ni->ni_wpa_ie, wpa);
+net80211/ieee80211_input.c:		} else if (ni->ni_wpa_ie != NULL) {
+net80211/ieee80211_input.c:			FREE(ni->ni_wpa_ie, M_DEVBUF);
+net80211/ieee80211_input.c:			ni->ni_wpa_ie = NULL;
+net80211/ieee80211_input.c:			ni->ni_rsn = rsn_parm;
+net80211/ieee80211_input.c:			ieee80211_saveie(&ni->ni_rsn_ie, rsn);
+net80211/ieee80211_input.c:		} else if (ni->ni_rsn_ie != NULL) {
+net80211/ieee80211_input.c:			FREE(ni->ni_rsn_ie, M_DEVBUF);
+net80211/ieee80211_input.c:			ni->ni_rsn_ie = NULL;
+net80211/ieee80211_input.c:			ieee80211_saveie(&ni->ni_wme_ie, wme);
+net80211/ieee80211_input.c:				ni->ni_flags |= IEEE80211_NODE_QOS;
+net80211/ieee80211_input.c:		} else if (ni->ni_wme_ie != NULL) {
+net80211/ieee80211_input.c:			FREE(ni->ni_wme_ie, M_DEVBUF);
+net80211/ieee80211_input.c:			ni->ni_wme_ie = NULL;
+net80211/ieee80211_input.c:			ni->ni_flags &= ~IEEE80211_NODE_QOS;
+net80211/ieee80211_input.c:		else if (ni->ni_ath_ie != NULL) {
+net80211/ieee80211_input.c:			FREE(ni->ni_ath_ie, M_DEVBUF);
+net80211/ieee80211_input.c:			ni->ni_ath_ie = NULL;
+net80211/ieee80211_input.c:			ni->ni_ath_flags = 0;
+net80211/ieee80211_input.c:		if (ni->ni_prev_vap &&
+net80211/ieee80211_input.c:		    ni->ni_vap != ni->ni_prev_vap &&
+net80211/ieee80211_input.c:		    ni->ni_vap->iv_ath_cap & IEEE80211_ATHC_XR) {
+net80211/ieee80211_input.c:			ni->ni_prev_vap = ni->ni_vap;
+net80211/ieee80211_input.c:		ni->ni_capinfo = capinfo;
+net80211/ieee80211_input.c:		ni->ni_associd = associd;
+net80211/ieee80211_input.c:			ni->ni_flags |= IEEE80211_NODE_QOS;
+net80211/ieee80211_input.c:			ni->ni_flags &= ~IEEE80211_NODE_QOS;
+net80211/ieee80211_input.c:		    ((ni->ni_capinfo & IEEE80211_CAPINFO_SHORT_PREAMBLE) &&
+net80211/ieee80211_input.c:				(ni->ni_capinfo & IEEE80211_CAPINFO_SHORT_SLOTTIME));
+net80211/ieee80211_input.c:		    (ni->ni_erp & IEEE80211_ERP_USE_PROTECTION))
+net80211/ieee80211_input.c:			(ni->ni_capinfo & IEEE80211_CAPINFO_SHORT_PREAMBLE) ? "short" : "long",
+net80211/ieee80211_input.c:			ni->ni_flags & IEEE80211_NODE_QOS ? ", QoS" : "",
+net80211/ieee80211_input.c:	struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_input.c:	if (ni->ni_associd == 0) {
+net80211/ieee80211_input.c:	if (aid != ni->ni_associd) {
+net80211/ieee80211_input.c:			ni->ni_associd, aid);
+net80211/ieee80211_power.c:	qlen = skb_queue_len(&ni->ni_savedq);
+net80211/ieee80211_power.c:	while ((skb = __skb_dequeue(&ni->ni_savedq)) != NULL) {
+net80211/ieee80211_power.c:		struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_power.c:		while ((skb = skb_peek(&ni->ni_savedq)) != NULL &&
+net80211/ieee80211_power.c:			skb = __skb_dequeue(&ni->ni_savedq);
+net80211/ieee80211_power.c:	struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_power.c:	aid = IEEE80211_AID(ni->ni_associd);
+net80211/ieee80211_power.c:	IEEE80211_LOCK(ni->ni_ic);
+net80211/ieee80211_power.c:	IEEE80211_UNLOCK(ni->ni_ic);
+net80211/ieee80211_power.c:	struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_power.c:	struct ieee80211com *ic = ni->ni_ic;
+net80211/ieee80211_power.c:	spin_lock_irqsave(&ni->ni_savedq.lock, flags);
+net80211/ieee80211_power.c:	if (skb_queue_len(&ni->ni_savedq) >= IEEE80211_PS_MAX_QUEUE) {
+net80211/ieee80211_power.c:		spin_unlock_irqrestore(&ni->ni_savedq.lock, flags);
+net80211/ieee80211_power.c:			ni->ni_stats.ns_psq_drops, IEEE80211_PS_MAX_QUEUE);
+net80211/ieee80211_power.c:			ieee80211_dump_pkt(ni->ni_ic, skb->data, skb->len, -1, -1);
+net80211/ieee80211_power.c:	age = ((ni->ni_intval * ic->ic_lintval) << 2) / 1024; /* TU -> secs */
+net80211/ieee80211_power.c:	tail = skb_peek_tail(&ni->ni_savedq);
+net80211/ieee80211_power.c:		__skb_append(tail, skb, &ni->ni_savedq);
+net80211/ieee80211_power.c:		__skb_queue_head(&ni->ni_savedq, skb);
+net80211/ieee80211_power.c:	qlen = skb_queue_len(&ni->ni_savedq);
+net80211/ieee80211_power.c:	spin_unlock_irqrestore(&ni->ni_savedq.lock, flags);
+net80211/ieee80211_power.c:	struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_power.c:		if ((ni->ni_flags & IEEE80211_NODE_PWR_MGT) == 0)
+net80211/ieee80211_power.c:		ni->ni_flags |= IEEE80211_NODE_PWR_MGT;
+net80211/ieee80211_power.c:	if ((ni->ni_flags & IEEE80211_NODE_PWR_MGT))
+net80211/ieee80211_power.c:	ni->ni_flags &= ~IEEE80211_NODE_PWR_MGT;
+net80211/ieee80211_power.c:				skb = __skb_dequeue(&ni->ni_savedq);
+net80211/ieee80211_crypto.c:	struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_crypto.c:	    ni->ni_ucastkey.wk_cipher == &ieee80211_cipher_none) {
+net80211/ieee80211_crypto.c:		k = &ni->ni_ucastkey;
+net80211/ieee80211_crypto.c:	struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_crypto.c:	    ni->ni_ucastkey.wk_cipher == &ieee80211_cipher_none)
+net80211/ieee80211_crypto.c:		k = &ni->ni_ucastkey;
+net80211/ieee80211_scan_sta.c:	se = sta_lookup(st, ni->ni_macaddr);
+net80211/ieee80211_scan_sta.c:		curRate = ni->ni_rates.rs_rates[ni->ni_txrate] & IEEE80211_RATE_VAL;
+net80211/ieee80211_output.c:	struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_output.c:	if (!(ni->ni_flags & IEEE80211_NODE_QOS)) 
+net80211/ieee80211_output.c:	if (ni->ni_vlan != 0 && vlan_tx_tag_present(skb)) {
+net80211/ieee80211_output.c:			ni->ni_stats.ns_tx_novlantag++;
+net80211/ieee80211_output.c:		    (ni->ni_vlan & VLAN_VID_MASK)) {
+net80211/ieee80211_output.c:			ni->ni_stats.ns_tx_vlanmismatch++;
+net80211/ieee80211_output.c:		if (ni->ni_flags & IEEE80211_NODE_QOS) {
+net80211/ieee80211_output.c:		struct ieee80211com *ic = ni->ni_ic;
+net80211/ieee80211_output.c:	} else if ((ni->ni_flags & IEEE80211_NODE_PWR_MGT)) {
+net80211/ieee80211_output.c:	    htole16(ni->ni_txseqs[0] << IEEE80211_SEQ_SEQ_SHIFT);
+net80211/ieee80211_output.c:	ni->ni_txseqs[0]++;
+net80211/ieee80211_output.c:	struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_output.c:	struct ieee80211com *ic = ni->ni_ic;
+net80211/ieee80211_output.c:		vap->iv_myaddr, ni->ni_macaddr, vap->iv_bss->ni_bssid);
+net80211/ieee80211_output.c:	if ((cb->flags & M_LINK0) != 0 && ni->ni_challenge != NULL) {
+net80211/ieee80211_output.c:	if (IEEE80211_VAP_IS_SLEEPING(ni->ni_vap))
+net80211/ieee80211_output.c:	struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_output.c:	struct ieee80211com *ic = ni->ni_ic;
+net80211/ieee80211_output.c:		vap->iv_myaddr, ni->ni_macaddr, vap->iv_bss->ni_bssid);
+net80211/ieee80211_output.c:	if ((IEEE80211_VAP_IS_SLEEPING(ni->ni_vap)) &&
+net80211/ieee80211_output.c:		ether_sprintf(ni->ni_macaddr),
+net80211/ieee80211_output.c:		ni, ether_sprintf(ni->ni_macaddr),
+net80211/ieee80211_output.c:	struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_output.c:	struct ieee80211com *ic = ni->ni_ic;
+net80211/ieee80211_output.c:		ni->ni_macaddr, /* DA */
+net80211/ieee80211_output.c:	if (IEEE80211_VAP_IS_SLEEPING(ni->ni_vap))
+net80211/ieee80211_output.c:		ni, ether_sprintf(ni->ni_macaddr),
+net80211/ieee80211_output.c:	if (KEY_UNDEFINED(ni->ni_ucastkey)) {
+net80211/ieee80211_output.c:		return &ni->ni_ucastkey;
+net80211/ieee80211_output.c:	struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_output.c:	struct ieee80211com *ic = ni->ni_ic;
+net80211/ieee80211_output.c:	addqos = (ni->ni_flags & IEEE80211_NODE_QOS) &&
+net80211/ieee80211_output.c:		ismulticast = IEEE80211_IS_MULTICAST(ni->ni_macaddr);
+net80211/ieee80211_output.c:		    !IEEE80211_ADDR_EQ(eh.ether_dhost, ni->ni_macaddr)) {
+net80211/ieee80211_output.c:			ismulticast = IEEE80211_IS_MULTICAST(ni->ni_macaddr);
+net80211/ieee80211_output.c:			ismulticast = IEEE80211_IS_MULTICAST(ni->ni_macaddr);
+net80211/ieee80211_output.c:			ismulticast = IEEE80211_IS_MULTICAST(ni->ni_bssid);
+net80211/ieee80211_output.c:		IEEE80211_ADDR_COPY(wh->i_addr1, ni->ni_macaddr);
+net80211/ieee80211_output.c:			IEEE80211_ADDR_COPY(wh->i_addr1, ni->ni_bssid);
+net80211/ieee80211_output.c:			IEEE80211_ADDR_COPY(wh->i_addr2, ni->ni_bssid);
+net80211/ieee80211_output.c:			IEEE80211_ADDR_COPY(wh->i_addr1, ni->ni_macaddr);
+net80211/ieee80211_output.c:			htole16(ni->ni_txseqs[tid] << IEEE80211_SEQ_SEQ_SHIFT);
+net80211/ieee80211_output.c:		ni->ni_txseqs[tid]++;
+net80211/ieee80211_output.c:			htole16(ni->ni_txseqs[0] << IEEE80211_SEQ_SEQ_SHIFT);
+net80211/ieee80211_output.c:		ni->ni_txseqs[0]++;
+net80211/ieee80211_output.c:		    !KEY_UNDEFINED(*key) : !KEY_UNDEFINED(ni->ni_ucastkey)))) {
+net80211/ieee80211_output.c:	struct ieee80211_wme_state *wme = &ni->ni_ic->ic_wme;
+net80211/ieee80211_output.c:	struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_output.c:	struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_output.c:	struct ieee80211com *ic = ni->ni_ic;
+net80211/ieee80211_output.c:		ni, ether_sprintf(ni->ni_macaddr),
+net80211/ieee80211_output.c:	struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_output.c:	struct ieee80211com *ic = ni->ni_ic;
+net80211/ieee80211_output.c:		ni, ether_sprintf(ni->ni_macaddr),
+net80211/ieee80211_output.c:		frm = ieee80211_add_rates(frm, &ni->ni_rates);
+net80211/ieee80211_output.c:                        *frm++ = ni->ni_fhdwell & 0x00ff;
+net80211/ieee80211_output.c:                        *frm++ = (ni->ni_fhdwell >> 8) & 0x00ff;
+net80211/ieee80211_output.c:                        *frm++ = ni->ni_fhindex;
+net80211/ieee80211_output.c:		frm = ieee80211_add_xrates(frm, &ni->ni_rates);
+net80211/ieee80211_output.c:			ni->ni_challenge != NULL);
+net80211/ieee80211_output.c:			memcpy(&((__le16 *)frm)[4], ni->ni_challenge,
+net80211/ieee80211_output.c:		if ((ni->ni_capinfo & IEEE80211_CAPINFO_SHORT_SLOTTIME) &&
+net80211/ieee80211_output.c:		frm = ieee80211_add_ssid(frm, ni->ni_essid, ni->ni_esslen);
+net80211/ieee80211_output.c:		frm = ieee80211_add_rates(frm, &ni->ni_rates);
+net80211/ieee80211_output.c:		frm = ieee80211_add_xrates(frm, &ni->ni_rates);
+net80211/ieee80211_output.c:		if ((vap->iv_flags & IEEE80211_F_WME) && ni->ni_wme_ie != NULL)
+net80211/ieee80211_output.c:		if (ni->ni_ath_flags & vap->iv_ath_cap) {
+net80211/ieee80211_output.c:				"iv_ath_cap = %02x", ni->ni_ath_flags,
+net80211/ieee80211_output.c:			    (ni->ni_authmode != IEEE80211_AUTH_8021X) &&
+net80211/ieee80211_output.c:				ni->ni_ath_flags & vap->iv_ath_cap,
+net80211/ieee80211_output.c:			*(__le16 *)frm = htole16(ni->ni_associd);
+net80211/ieee80211_output.c:		frm = ieee80211_add_rates(frm, &ni->ni_rates);
+net80211/ieee80211_output.c:		frm = ieee80211_add_xrates(frm, &ni->ni_rates);
+net80211/ieee80211_output.c:		if ((vap->iv_flags & IEEE80211_F_WME) && ni->ni_wme_ie != NULL)
+net80211/ieee80211_output.c:				vap->iv_ath_cap & ni->ni_ath_flags,
+net80211/ieee80211_output.c:				ni->ni_ath_defkeyindex); 
+net80211/ieee80211_output.c:	struct ieee80211vap *vap = ni->ni_vap;
+net80211/ieee80211_output.c:	struct ieee80211com *ic = ni->ni_ic;
+net80211/ieee80211_output.c:	IEEE80211_ADDR_COPY(wh->i_addr1, ni->ni_bssid);
+net80211/ieee80211_output.c:	if (IEEE80211_VAP_IS_SLEEPING(ni->ni_vap))
+net80211/ieee80211_output.c:		ni, ether_sprintf(ni->ni_macaddr),
+net80211/ieee80211_output.c:	IEEE80211_ADDR_COPY(wh->i_addr3, ni->ni_bssid);
+README:and 3Com; and mini-pci cards from some of these same vendors.  In
+README:addition, many laptop vendors use Atheros mini-pci cards for their
